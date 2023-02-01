@@ -1,4 +1,5 @@
 const express = require('express');
+    morgan =require('morgan');
 const app = express();
 
 let topMovies = [
@@ -44,18 +45,26 @@ let topMovies = [
     },
     
 ];
+app.use(express.static('public'));
+app.use(morgan('common'));
 
 //GET requests
 app.get('/', (req, res) => {
     res.send('Welcome to the Movie App!');
 });
 
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
+});
+
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
 
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname});
+//Handling Errors
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Oh, something went worng. Please try again later.");
 });
 
 //listen for requests
