@@ -4,12 +4,11 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-     
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "file": "C:\\Users\\gabri\\Desktop\\Career Foundry\\CF_Intro_Exercises\\Achievement 2\\Task 2.1\\movie_api\\public\\documentation.html"
+            "name": "Open documentation.html",
+            "file": "C:\\Users\\gabri\\Desktop\\Career Foundry\\CF_Intro_Exercises\\Achievement 2\\Task 2.1\\movi_api\\public\\documentation.html"
             
         }
     ]
