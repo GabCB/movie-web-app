@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "file": "C:\\Users\\gabri\\Desktop\\Career Foundry\\CF_Intro_Exercises\\Achievement 2\\Task 2.1\\movie_api"
+            "file": "C:\\Users\\gabri\\Desktop\\Career Foundry\\CF_Intro_Exercises\\Achievement 2\\Task 2.1\\movie_api\\public\\documentation.html"
             
         }
     ]
