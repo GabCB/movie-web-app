@@ -3,8 +3,14 @@ const express = require('express'),
     morgan =require('morgan'),
     bodyParser = require('body-parser'),
     uuid = require ('uuid');
+    mongoose = require('mongoose');
+    Models = require('./models.js');
+    Movies = Models.Movie;
+    Users = Models.User;
     
 app.use(bodyParser.json());
+
+mongoose.connect('mongodb://localhost:27017/moviesappMongoDB', { useNewUrlPrser: true, useUnifiedTopology: true });
 
 let movies = [
     {
