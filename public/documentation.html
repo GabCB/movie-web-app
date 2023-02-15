@@ -56,27 +56,27 @@
 
   <tr>
     <td>Returns data about single movie by title</td>
-    <td>/movies/:title</td>
+    <td>/movies/:Title</td>
     <td>GET</td>
-    <td>:title</td>
+    <td>:Title</td>
     <td>-</td>
     <td>A JSON object holding data about a single movie</td>
   </tr>
 
   <tr>
     <td>Returns data about a genre by title</td>
-    <td>/movies/genre/:genreName</td>
+    <td>/genre/:Name</td>
     <td>GET</td>
-    <td>:genreName</td>
+    <td>:Name</td>
     <td>-</td>
     <td>A JSON object holding data about a specific genre of movie</td>
   </tr>
 
   <tr>
     <td>Returns data about a director by name</td>
-    <td>/movies/director/:directorName</td>
+    <td>/directors/:Name</td>
     <td>GET</td>
-    <td>:directorName</td>
+    <td>:Name</td>
     <td>-</td>
     <td>A JSON object holding data about a specific director</td>
   </tr>
@@ -110,7 +110,7 @@
 
   <tr>
     <td>Allows users to remove a movie from their favourites</td>
-    <td>/users/:id/:movieTitle</td>
+    <td>/users/:Username/movies/:Title</td>
     <td>DELETE</td>
     <td>:id, :movieTitle</td>
     <td>-</td>
