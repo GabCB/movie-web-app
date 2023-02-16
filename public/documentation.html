@@ -9,8 +9,8 @@
 
 <body>
   <div>
-    <h1>Documentation Page</h1>
-    <h2>Movies Web App</h2>
+    <h1>My Movie App Documentation Page</h1>
+    <h2>Objective</h2>
     <p>
     The web application will provide users with access to information about different movies, directors, and genres. 
     Users will be able to sign up, update their personal information, and create a list of their favorite movies.
@@ -65,18 +65,18 @@
 
   <tr>
     <td>Returns data about a genre by title</td>
-    <td>/genre/:Name</td>
+    <td>/movies/genre/:genreName</td>
     <td>GET</td>
-    <td>:Name</td>
+    <td>:genreName</td>
     <td>-</td>
     <td>A JSON object holding data about a specific genre of movie</td>
   </tr>
 
   <tr>
     <td>Returns data about a director by name</td>
-    <td>/directors/:Name</td>
+    <td>/movies/directors/:directorName</td>
     <td>GET</td>
-    <td>:Name</td>
+    <td>:directorName</td>
     <td>-</td>
     <td>A JSON object holding data about a specific director</td>
   </tr>
@@ -86,42 +86,46 @@
     <td>/users</td>
     <td>POST</td>
     <td>-</td>
-    <td>A JSON object holding data about the user to add, structured like: { "name" : "John" }</td>
-    <td>A JSON object holding data about the user that was added</td>
+    <td>A JSON object holding data about the user to add, structured like:
+      {"Username" : "String", "Password": "String", "Email": "String", "Birthday": "Date"}
+    </td>
+    <td>A JSON object holding data about the user that was added, structured like this:
+      {"username: "Test1", "Password": "1234", "Email": "testtest@telco.com", "Birthday": "1994-10-29", "favorite movie" : [] } including an ID
+    </td>
   </tr>
 
   <tr>
     <td>Allows users to update their user info</td>
-    <td>/users/:id</td>
+    <td>/users/:Username</td>
     <td>PUT</td>
-    <td>:id</td>
+    <td>:Username</td>
     <td>-</td>
     <td>A JSON object holding data about the updated user information</td>
   </tr>
 
   <tr>
     <td>Allows users to add a movie to their favourites</td>
-    <td>/users/:id/:movieTitle</td>
+    <td>/users/:Username/movies/:MovieID</td>
     <td>POST</td>
-    <td>:id, :movieTitle</td>
+    <td>:Username, :MovieID</td>
     <td>-</td>
     <td>A JSON object holding data about the user and the movie that was added</td>
   </tr>
 
   <tr>
     <td>Allows users to remove a movie from their favourites</td>
-    <td>/users/:Username/movies/:Title</td>
+    <td>/users/:Username/movies/:MovieID</td>
     <td>DELETE</td>
-    <td>:id, :movieTitle</td>
+    <td>:Username, :MovieID</td>
     <td>-</td>
     <td>A JSON object holding data about the user and the movie that was removed</td>
   </tr>
 
   <tr>
     <td>Allows existing users to deregister</td>
-    <td>/users/:id</td>
+    <td>/users/:Username</td>
     <td>DELETE</td>
-    <td>:id</td>
+    <td>-</td>
     <td>-</td>
     <td>A text message indicating whether the user has successfully deregistered</td>
   </tr>
