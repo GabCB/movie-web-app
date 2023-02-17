@@ -90,3 +90,8 @@ Timestamp: Sun Jan 29 2023 21:48:27 GMT+0100 (hora estándar de Europa central)
 ::1 - - [17/Feb/2023:16:47:17 +0000] "DELETE /users/userBrenda/movies/63ea2f75b0901de736229d36 HTTP/1.1" 200 173
 ::1 - - [17/Feb/2023:16:49:03 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 268
 ::1 - - [17/Feb/2023:16:49:51 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 268
+::1 - - [17/Feb/2023:17:01:31 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [17/Feb/2023:17:01:55 +0000] "GET /movies/genre/Fantasy HTTP/1.1" 200 268
+::1 - - [17/Feb/2023:17:02:05 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 268
+::1 - - [17/Feb/2023:17:04:16 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 142
+::1 - - [17/Feb/2023:17:05:25 +0000] "GET /movies/genre/Thriller HTTP/1.1" 200 128
