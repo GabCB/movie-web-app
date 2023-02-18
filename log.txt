@@ -97,3 +97,17 @@ Timestamp: Sun Jan 29 2023 21:48:27 GMT+0100 (hora estándar de Europa central)
 ::1 - - [17/Feb/2023:17:05:25 +0000] "GET /movies/genre/Thriller HTTP/1.1" 200 128
 ::1 - - [18/Feb/2023:19:04:53 +0000] "GET /movies HTTP/1.1" 201 8884
 ::1 - - [18/Feb/2023:19:06:28 +0000] "GET /USERS HTTP/1.1" 201 1129
+::1 - - [18/Feb/2023:20:40:26 +0000] "GET /USERS HTTP/1.1" 401 -
+::1 - - [18/Feb/2023:20:42:21 +0000] "GET /movies HTTP/1.1" 401 -
+::1 - - [18/Feb/2023:20:44:34 +0000] "POST /users HTTP/1.1" 401 -
+::1 - - [18/Feb/2023:20:49:45 +0000] "POST /users HTTP/1.1" 401 -
+::1 - - [18/Feb/2023:20:50:30 +0000] "POST /users HTTP/1.1" 201 168
+::1 - - [18/Feb/2023:20:53:54 +0000] "GET /login HTTP/1.1" 404 144
+::1 - - [18/Feb/2023:21:05:47 +0000] "GET /movies HTTP/1.1" 401 -
+::1 - - [18/Feb/2023:21:05:56 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [18/Feb/2023:21:07:37 +0000] "GET /movies/directors/Paul%Greengrass HTTP/1.1" 500 49
+::1 - - [18/Feb/2023:21:07:58 +0000] "GET /movies/directors/Paul%20Greengrass HTTP/1.1" 200 135
+::1 - - [18/Feb/2023:21:09:15 +0000] "GET /movies/genre/Comedy-Drama HTTP/1.1" 200 145
+::1 - - [18/Feb/2023:21:10:17 +0000] "GET /movies/News%20of%20%the%20World HTTP/1.1" 500 49
+::1 - - [18/Feb/2023:21:10:26 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [18/Feb/2023:21:10:55 +0000] "GET /movies/News%20of%20the%20world HTTP/1.1" 200 696
