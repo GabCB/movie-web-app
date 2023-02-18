@@ -95,3 +95,5 @@ Timestamp: Sun Jan 29 2023 21:48:27 GMT+0100 (hora estándar de Europa central)
 ::1 - - [17/Feb/2023:17:02:05 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 268
 ::1 - - [17/Feb/2023:17:04:16 +0000] "GET /movies/genre/Drama HTTP/1.1" 200 142
 ::1 - - [17/Feb/2023:17:05:25 +0000] "GET /movies/genre/Thriller HTTP/1.1" 200 128
+::1 - - [18/Feb/2023:19:04:53 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [18/Feb/2023:19:06:28 +0000] "GET /USERS HTTP/1.1" 201 1129
