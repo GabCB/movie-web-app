@@ -22,6 +22,10 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {f
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+let auth = require("./auth")(app);
+const passport = require("passport");
+require("./passport");
+
  //log requests to server
  app.use(express.static("public"));
  app.use(morgan("common", {stream: accessLogStream}));
@@ -284,7 +288,7 @@ app.delete("/users/:Username/movies/:MoviesID", (req, res) => {
 });
 
 //READ (GET all movies)
-app.get("/movies", (req, res) => {
+app.get("/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
     Movies.find()
     .then((movies) => {
         res.status(201).json(movies);   
