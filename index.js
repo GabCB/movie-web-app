@@ -7,6 +7,7 @@ const express = require("express"),
     path = require ("path"),
     mongoose = require("mongoose"),
     Models = require("./models.js"),
+    { check, validationResult } = require("express-validator"),
     Movies = Models.Movie,
     Users = Models.User;
     //Genres = Models.Genre,
@@ -22,6 +23,20 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {f
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+const cors = require("cors");
+let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
+
+app.use(cors({
+    origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){//If a specific origin isn't found on the list of allowed origins
+        let message ="The CORS policy for this application doesn't allow access from origin " + origin;
+        return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+    }
+}));
+
 let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
@@ -29,125 +44,6 @@ require("./passport");
  //log requests to server
  app.use(express.static("public"));
  app.use(morgan("common", {stream: accessLogStream}));
-
-
-/*let movies = [
-    {
-        "title": "Fantastic Beasts: The Crimes of Grindelwald",
-        "description": "placeholder description",
-        "release": "2018",
-         "genre": "fantasy",
-         "director":  {
-        "name": "David Yates",
-        "bio": "placeholder bio",
-        "birth year": "1963"},
-    },
-    {
-        "title": "News of the world",
-        "description": "placeholder description",
-        "release": "2020",
-         "genre": "drama",
-        "director":  {
-            "name": "Paul Greengrass",
-            "bio": "placeholder bio",
-            "birth year": "1955"},
-    },
-    {
-        "title": "Man on fire",
-        "description": "placeholder description",
-        "release": "2004",
-         "genre": "thriller",
-        "director":  {
-            "name": "Tony Scott",
-            "bio": "placeholder bio",
-            "birth year": "1944"},
-    },
-    {
-        "title": "The danish girl",
-        "description": "placeholder description",
-        "release": "2015",
-         "genre": "drama",
-         "director":  {
-            "name": "Tom Hooper",
-            "bio": "placeholder bio",
-            "birth year": "1972"},
-    },
-    {
-        "title": "Dune",
-        "description": "placeholder description",
-        "release": "2021",
-         "genre": "science-fiction",
-         "director":  {
-            "name": "Denis Villeneuve",
-            "bio": "placeholder bio",
-            "birth year": "1967"},
-    },
-    {
-        "title": "Radioactive",
-        "description": "placeholder description",
-        "release": "2019",
-         "genre": "drama",
-         "director":  {
-            "name": "Marjane Satrapi",
-            "bio": "placeholder bio",
-            "birth year": "1969"},
-    },
-    {
-        "title": "The Laundromat",
-        "description": "placeholder description",
-        "release": "2019",
-         "genre": "comedy-drama",
-         "director":  {
-            "name": "Steven Soderbergh",
-            "bio": "placeholder bio",
-            "birth year": "1963"},
-    },
-    {
-        "title": "Hampstead",
-        "description": "placeholder description",
-        "release": "2017",
-         "genre": "romance",
-         "director":  {
-            "name": "Joel Hopkins",
-            "bio": "placeholder bio",
-            "birth year": "1970"},
-    },
-    {
-        "title": "The two popes",
-        "description": "placeholder description",
-        "release": "2019",
-         "genre": "drama",
-        "director":  {
-            "name": "Fernando Meirelles",
-            "bio": "placeholder bio",
-            "birth year": "1955"},
-    },
-    {
-        "title": "Don't look up",
-        "description": "placeholder description",
-        "release": "2021",
-         "genre": "science-fiction",
-        "director":  {
-            "name": "Adam McKay",
-            "bio": "placeholder bio",
-            "birth year": "1968"},
-    },
-    
-    
-];*/
-
-/*let users = [
-    {
-        "id": "1",
-        "name": "Thomas",
-        "favoriteMovie": []
-      },
-      {
-        "id": "2",
-        "name": "Sophie",
-        "favoriteMovie": ["Dune"],
-      }
-];*/
 
 //homepage text response
 app.get("/", (req, res) => {
@@ -159,16 +55,34 @@ app.get("/documentation", (req, res) => {
 });
 
 //CREATE a new user
-app.post("/users", (req, res) => {
-    Users.findOne({ Username: req.body.Username })
+app.post("/users",
+    //Validation logic here for request you can either usea a chain method like .not().isEmpty()
+    //which means "oposite of isEmpty" in plain english "is not empty"
+    //or use .isLength({min:5}) which means minimun value of 5 characters is allowed
+    [
+        check("Username", "Username is required").isLength({min: 5}),
+        check("Username", "Username contains non alphanumeric characters -  not allowed.").isAlphanumeric(),
+        check("Password", "Password is required").not().isEmpty(),
+        check("Email", "Email does not appear to be valid").isEmail()
+], (req, res) => {
+    //check the validation object for errors
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array()
+        });
+    }
+    
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ Username: req.body.Username })//Search to see is a user with the requested username already exists
     .then((user) => {
-        if(user) {
+        if(user) { //If the user is found, send a response that it already exists
             return res.status(400).send(req.body.username + " already exists");
         }else {
         Users
             .create({
                 Username: req.body.Username,
-                Password: req.body.Password,
+                Password: hashedPassword,
                 Email: req.body.Email,
                 Birthday: req.body.Birthday,
             })
