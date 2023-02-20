@@ -111,3 +111,11 @@ Timestamp: Sun Jan 29 2023 21:48:27 GMT+0100 (hora estándar de Europa central)
 ::1 - - [18/Feb/2023:21:10:17 +0000] "GET /movies/News%20of%20%the%20World HTTP/1.1" 500 49
 ::1 - - [18/Feb/2023:21:10:26 +0000] "GET /movies HTTP/1.1" 201 8884
 ::1 - - [18/Feb/2023:21:10:55 +0000] "GET /movies/News%20of%20the%20world HTTP/1.1" 200 696
+::1 - - [20/Feb/2023:12:56:21 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [20/Feb/2023:12:58:34 +0000] "POST /users HTTP/1.1" 201 178
+::1 - - [20/Feb/2023:13:03:47 +0000] "GET /movies HTTP/1.1" 201 8884
+::1 - - [20/Feb/2023:13:04:48 +0000] "GET /users HTTP/1.1" 201 1477
+::1 - - [20/Feb/2023:13:20:14 +0000] "GET /users HTTP/1.1" 201 1477
+::1 - - [20/Feb/2023:13:20:37 +0000] "DELETE /users/userMartina HTTP/1.1" 200 24
+::1 - - [20/Feb/2023:13:21:12 +0000] "POST /users HTTP/1.1" 201 228
+::1 - - [20/Feb/2023:13:25:25 +0000] "GET /users HTTP/1.1" 201 1527
