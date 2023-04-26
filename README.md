@@ -2,7 +2,8 @@
 
 ## Overview
 
-This is the server-side component for "myFlix" web application.B Built using JavaScript, Node.js, Express and MongoDB. <br>
+This is the server-side component for "myFlix" web application. <br>
+Built using JavaScript, Node.js, Express and MongoDB. <br>
 ![myFlix-Backend](https://i.imgur.com/J8dZKdZ.png) <br>
 
 ## Table of contents
