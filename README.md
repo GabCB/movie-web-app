@@ -43,8 +43,8 @@ This is the server-side component for "myFlix" web application.B Built using Jav
 
 ### Links
 
-[API Documentation](https://moviewebapp.herokuapp.com/documentation.html)
-[Code URL](https://github.com/GabCB/movie-web-app/tree/main)
+[API Documentation](https://moviewebapp.herokuapp.com/documentation.html) <br>
+[Code URL](https://github.com/GabCB/movie-web-app/tree/main) <br>
 
 
 
