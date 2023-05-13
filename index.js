@@ -33,7 +33,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 const cors = require("cors");
-let allowedOrigins = ["http://localhost:8080", "http://localhost:1234", "https://moviewebapp.herokuapp.com/"];
+let allowedOrigins = [
+    "http://localhost:8080", 
+    "http://localhost:1234", 
+    "https://moviewebapp.herokuapp.com/",
+    "https://myawesomeflix.netlify.app",
+    "http://localhost:4200",
+];
 
 app.use(cors());
 
