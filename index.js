@@ -259,7 +259,7 @@ app.get("/movies/genre/:genreName", passport.authenticate("jwt", { session: fals
 //Handling Errors
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send("Oh, something went worng. Please try again later.");
+    res.status(500).send("Something is not quite right. Give it another try.");
 });
 
 //Listen for requests
